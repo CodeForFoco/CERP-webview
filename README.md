@@ -21,6 +21,7 @@ Larimer County provides information about elections at a precinct level, but the
 
 ## Getting Started
 
+As a small note, if aren't using `node 6.11.4` and `npm@3.10.10` it may not build.  NVM or docker are decent choices for getting everything to work.
 
 ``` bash
 # install dependencies
@@ -30,6 +31,8 @@ npm install
 npm run dev
 
 # build for production with minification
+# Please be sure to have cloned CERP-backend,
+# as the build expects the directory
 npm run build
 
 # build for production and view the bundle analyzer report

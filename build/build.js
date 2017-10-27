@@ -13,8 +13,6 @@ const webpackConfig = require('./webpack.prod.conf')
 const rimraf = require('rimraf');
 const mv = require('mv');
 
-// const fs = require('fs')
-
 const spinner = ora('building for production...')
 spinner.start()
 
@@ -41,27 +39,24 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       '  Tip: built files are meant to be served over an HTTP server.\n' +
       '  Opening index.html over file:// won\'t work.\n'
     ))
-    // fs.rename('dist/index.html', '../cerp/templates/index.html', function (err) {
-    //   if (err) throw err
-    //   console.log(chalk.cyan('index.html copied to new server'))
-    // })
+
     console.log(chalk.cyan('  Custom CERP:  Moving built files into the python application'))
     console.log(chalk.cyan('  Deleting old static files...'))
-    rimraf.sync('../cerp/static/css')
-    rimraf.sync('../cerp/static/js')
-    rimraf.sync('../cerp/templates/index.html')
+    rimraf.sync('../CERP-backend/cerp/static/css')
+    rimraf.sync('../CERP-backend/cerp/static/js')
+    rimraf.sync('../CERP-backend/cerp/templates/index.html')
     console.log(chalk.cyan('  Deleting done'))
-    mv('dist/index.html', '../cerp/templates/index.html', function (err) {
+    mv('dist/index.html', '../CERP-backend/cerp/templates/index.html', function (err) {
       if (err) throw err
-      console.log(chalk.cyan('  index.html moved to production'))
+      console.log(chalk.cyan('  index.html moved to ../CERP-backend/cerp/templates/index.html'))
     })
-    mv('dist/static/css', '../cerp/static/css', {mkdirp: true}, function (err) {
+    mv('dist/static/css', '../CERP-backend/cerp/static/css', {mkdirp: true}, function (err) {
       if (err) throw err
-      console.log(chalk.cyan('  css moved to production'))
+      console.log(chalk.cyan('  css moved to ../CERP-backend/cerp/static/css'))
     })
-    mv('dist/static/js', '../cerp/static/js', {mkdirp: true}, function (err) {
+    mv('dist/static/js', '../CERP-backend/cerp/static/js', {mkdirp: true}, function (err) {
       if (err) throw err
-      console.log(chalk.cyan('  js moved to production'))
+      console.log(chalk.cyan('  js moved to ../CERP-backend/cerp/static/js'))
     })
   })
 })
