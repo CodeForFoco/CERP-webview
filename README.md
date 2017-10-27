@@ -1,7 +1,7 @@
 # CERP-webview
 
 > The webview for the CERP project.
-> See [CERP-backend](https://github.com/CodeForFoco/CERP-backend) for the backened.
+> See [CERP-backend][backend] for the backened.
 
 Community Elections Resources and Polling Tool
 
@@ -89,8 +89,9 @@ MIT, see [LICENSE](/LICENSE) for full license.
 [slack]: https://codeforfoco.slack.com/
 [slackinvite]: https://codeforfocoslack.herokuapp.com
 [fork]: https://help.github.com/articles/fork-a-repo/
-[forkthisrepo]: https://github.com/CodeForFoco/TODOUPDATEURL#fork-destination-box
+[forkthisrepo]: https://github.com/CodeForFoco/CERP-webview#fork-destination-box
 [contributing]: https://github.com/CodeForFoco/org/blob/master/CONTRIBUTING.md
-[githubissue]: https://github.com/CodeForFoco/TODOUPDATEURL/issues
-[newissue]: https://github.com/CodeForFoco/TODOUPDATEURL/issues/new
-[pullrequest]: https://github.com/CodeForFoco/TODOUPDATEURL/pulls
+[githubissue]: https://github.com/CodeForFoco/CERP-webview/issues
+[newissue]: https://github.com/CodeForFoco/CERP-webview/issues/new
+[pullrequest]: https://github.com/CodeForFoco/CERP-webview/pulls
+[backend]:https://github.com/CodeForFoco/CERP-backend  
