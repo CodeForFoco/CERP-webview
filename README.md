@@ -62,9 +62,9 @@ There are three options:
 2. API_LOCATION: ''
 3. API_LOCATION: 'https://cerp-code-foco.herokuapp.com'
 
-Use 1 if you are planning on making changes to both the front end and back end (you'll need to start the pythons server)
-Use 2 if you are building for production DONT FORGET TO CHANGE CONFIG TO THIS IF BUILDING FOR PRODUCTION
-Use 3 if you are planning on making changes to the front end, and don't want to start up the local dev server
+* Use 1 if you are planning on making changes to both the front end and back end (you'll need to start the pythons server)
+* Use 2 if you are building for production DONT FORGET TO CHANGE CONFIG TO THIS IF BUILDING FOR PRODUCTION
+* Use 3 if you are planning on making changes to the front end, and don't want to start up the local dev server
 ## Contributing
 
 We welcome new contributors.  Be sure to check out guide on [contributing][contributing], which includes instructions on how to fork, clone, branch, commit, pull request and sync your fork.
