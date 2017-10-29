@@ -1,5 +1,8 @@
 # CERP-webview
 
+[![Build Status](https://travis-ci.org/CodeForFoco/CERP-webview.svg?branch=master)](https://travis-ci.org/CodeForFoco/CERP-webview)
+[![Coverage Status](https://coveralls.io/repos/github/CodeForFoco/CERP-webview/badge.svg?branch=master)](https://coveralls.io/github/CodeForFoco/CERP-webview?branch=master)
+
 > The webview for the CERP project.
 > See [CERP-backend][backend] for the backened.
 
