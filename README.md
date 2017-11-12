@@ -24,50 +24,70 @@ Larimer County provides information about elections at a precinct level, but the
 
 ## Getting Started
 
-As a small note, if aren't using `node 6.11.4` and `npm@3.10.10` it may not build.  NVM or docker are decent choices for getting everything to work.
+For a detailed explanation on how things work, check out the [guide](vue-webpack) and [docs for vue-loader](vue-loader-docs).
+
+### Initial Steps
+
+These steps only need to be performed once.
+
+#### Verify Required Applications
+
+If you aren't using `node 6.11.4` and `npm@3.10.10`, your project may not build correctly.  If that is the case, consider using [nvm][nvm] or [Docker][docker] as an alternative to actually installing a [different version of Node][node-releases] on your machine.
+
+#### Dependencies/Packages
+
+Install `npm` dependencies:
 
 ``` bash
-# install dependencies
 npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-# Please be sure to have cloned CERP-backend,
-# as the build expects the directory
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#### Set the Database Source
 
-Additional notes:
+In *src/config.js*, uncomment the applicable option (and comment the other two) for `API_LOCATION`:
 
-The only file that needs to be changed is:
+| Option                                 | Scenario                                                                                     |
+|----------------------------------------|----------------------------------------------------------------------------------------------|
+| `http://localhost:5000`                | Front **AND** back end development (be sure to [start the Python server][backend-serve] first)   |
+| `https://cerp-code-foco.herokuapp.com` | **Front** end development                                                                        |
+| `''`                                   | Building for **production**. *DON'T FORGET TO CHANGE CONFIG TO THIS IF BUILDING FOR PRODUCTION.* |
 
-`src/config.js`
+## Developing
 
-There are three options:
+Once you have completed the initial setup steps above, follow these instructions to start developing.
 
-1. API_LOCATION: 'http://localhost:5000'
-2. API_LOCATION: ''
-3. API_LOCATION: 'https://cerp-code-foco.herokuapp.com'
+### Start the Server
 
-* Use 1 if you are planning on making changes to both the front end and back end (you'll need to start the pythons server)
-* Use 2 if you are building for production DONT FORGET TO CHANGE CONFIG TO THIS IF BUILDING FOR PRODUCTION
-* Use 3 if you are planning on making changes to the front end, and don't want to start up the local dev server
+To start a local web server with hot reload (browser will refresh automatically when files are changed) at [localhost:8080](http://localhost:8080):
+
+``` bash
+npm run dev
+```
+
+### Running Tests
+
+Several commands exist for periodically running various tests on the code:
+
+- **Unit:** `npm run unit`
+- **e2e:** `npm run e2e`
+- **All:** `npm test`
+
+### Building and Testing
+
+Building the project is a step for individuals responsible for updating the production environment. Before running these steps, please be sure you have cloned [CERP-backend][backend] as the build expects the directory.
+
+To periodically build the project for production with minification:
+
+```bash
+npm run build
+```
+
+Or, to build for production and view the bundle analyzer report:
+
+```bash
+npm run build --report
+```
+
 ## Contributing
 
 We welcome new contributors.  Be sure to check out guide on [contributing][contributing], which includes instructions on how to fork, clone, branch, commit, pull request and sync your fork.
@@ -100,4 +120,10 @@ MIT, see [LICENSE](/LICENSE) for full license.
 [githubissue]: https://github.com/CodeForFoco/CERP-webview/issues
 [newissue]: https://github.com/CodeForFoco/CERP-webview/issues/new
 [pullrequest]: https://github.com/CodeForFoco/CERP-webview/pulls
-[backend]:https://github.com/CodeForFoco/CERP-backend  
+[backend]: https://github.com/CodeForFoco/CERP-backend
+[backend-serve]: https://github.com/CodeForFoco/CERP-backend#start-the-server
+[docker]: https://www.docker.com/
+[nvm]: https://github.com/creationix/nvm
+[node-releases]: https://nodejs.org/en/download/releases/
+[vue-webpack]: http://vuejs-templates.github.io/webpack/
+[vue-loader-docs]: http://vuejs.github.io/vue-loader
