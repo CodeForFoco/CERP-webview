@@ -42,7 +42,7 @@ Install `npm` dependencies:
 npm install
 ```
 
-#### Set the Database Source
+#### Set the API Source
 
 In *src/config.js*, uncomment the applicable option (and comment the other two) for `API_LOCATION`:
 
