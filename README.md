@@ -32,7 +32,13 @@ These steps only need to be performed once.
 
 #### Verify Required Applications
 
-If you aren't using `node 6.11.4` and `npm@3.10.10`, your project may not build correctly.  If that is the case, consider using [nvm][nvm] or [Docker][docker] as an alternative to actually installing a [different version of Node][node-releases] on your machine.
+This project is confirmed to work with a minimum of `node 6.11.3` and `npm@3.10.10`. If you do not wish to install the minimum [version of Node][node-releases] system-wide, you have a couple of options:
+- [nvm (Node Version Manager)][nvm] **(recommended)** allows you to use multiple versions of Node and `npm` on the same machine. Once you have followed the installation instructions, run:
+    ```bash
+    nvm install
+    ```
+    ...to automatically set the appropriate versions for this project.
+- [Docker][docker] is a more complex alternative that will not be covered here, but feel free to use it or any other method you want.
 
 #### Dependencies/Packages
 
