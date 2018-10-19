@@ -79,7 +79,7 @@ export default {
       if (this.presidential_pie_data.length === 0) {
         this.ajaxRequest = true
         this.$http.get(
-        config.API_LOCATION + '/api/presidential/all/pie'
+        config.API_LOCATION + '/api/PresidentialElection-2016/all/pie'
         ).then(response => {
           this.ajaxRequest = false
           var res = response.body
@@ -98,7 +98,7 @@ export default {
       /* eslint-disable no-undef */
       var oldSelectedOption = this.selected_option
       this.selected_option = 'county_map'
-      mapboxgl.accessToken = 'pk.eyJ1IjoiZGVpZHlvbWVnYSIsImEiOiJjajkwaWh1b2gxaTN2MnducmFmZ2Q0NHN4In0.xSg05BL0_xFAzPOqyES2-A'
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuYmVydDIwMDAiLCJhIjoiY2puZmIzYmt1Nml3dTNrbjE2aXc4MDlqMyJ9.gtABBpjqxcj0jo8PGmbrHQ'
       var map = new mapboxgl.Map({
         container: 'std_map',
         style: 'mapbox://styles/mapbox/light-v9',
@@ -141,7 +141,7 @@ export default {
         var geodata = JSON.parse(response.body)
         console.log(geodata)
         this.$http.get(
-          config.API_LOCATION + '/api/presidential/all/heatmap'
+          config.API_LOCATION + '/api/PresidentialElection-2016/all/diff'
         ).then(response => {
           var heatdata = response.body
           console.log(heatdata)
@@ -149,7 +149,7 @@ export default {
 
           /* eslint-disable no-undef */
           var oldSelectedOption = this.selected_option
-          mapboxgl.accessToken = 'pk.eyJ1IjoiZGVpZHlvbWVnYSIsImEiOiJjajkwaWh1b2gxaTN2MnducmFmZ2Q0NHN4In0.xSg05BL0_xFAzPOqyES2-A'
+          mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuYmVydDIwMDAiLCJhIjoiY2puZmIzYmt1Nml3dTNrbjE2aXc4MDlqMyJ9.gtABBpjqxcj0jo8PGmbrHQ'
           var map = new mapboxgl.Map({
             container: 'std_map_with_pres',
             style: 'mapbox://styles/mapbox/light-v9',
