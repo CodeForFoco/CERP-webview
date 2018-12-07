@@ -18,13 +18,16 @@
                   </md-input-container>
                 </md-card-content>
             </md-card>
+            <md-card>
+              <div id="status">unloaded</div>
+            </md-card>
         </md-layout>
 
         <!-- std_map -->
         <md-layout md-flex="50" md-column v-show="selected_option === 'county_map'">
             <md-card>
                 <md-card-header>
-                    <div class="md-title">Lamier County precincts</div>
+                    <div class="md-title">Larimer County precincts</div>
                 </md-card-header>
                 <md-card-media>
                     <div id="std_map" class="map"></div>
@@ -36,7 +39,7 @@
         <md-layout md-flex="50" md-column v-show="selected_option === 'county_map_with_pres'">
             <md-card>
                 <md-card-header>
-                    <div class="md-title">Lamier County Presidential Election Heatmap</div>
+                    <div class="md-title">Larimer County Presidential Election Heatmap</div>
                 </md-card-header>
                 <md-card-media>
                     <div id="std_map_with_pres" class="map"></div>
@@ -81,6 +84,7 @@ export default {
         this.$http.get(
         config.API_LOCATION + '/api/PresidentialElection-2016/all/pie'
         ).then(response => {
+          console.log('presidential pie get: ' + response.toString())
           this.ajaxRequest = false
           var res = response.body
           if (res.result) {
@@ -96,7 +100,7 @@ export default {
     },
     std_map: function (event) {
       /* eslint-disable no-undef */
-      var oldSelectedOption = this.selected_option
+      /* var oldSelectedOption = this.selected_option */
       this.selected_option = 'county_map'
       mapboxgl.accessToken = 'pk.eyJ1IjoiZGFuYmVydDIwMDAiLCJhIjoiY2puZmIzYmt1Nml3dTNrbjE2aXc4MDlqMyJ9.gtABBpjqxcj0jo8PGmbrHQ'
       var map = new mapboxgl.Map({
@@ -107,9 +111,9 @@ export default {
       })
 
       map.on('load', function () {
-        this.selected_option = oldSelectedOption
+        /* this.selected_option = oldSelectedOption */
         map.addLayer({
-          'id': 'lamier-county',
+          'id': 'larimer-county',
           'type': 'fill',
           'source': {
             'type': 'geojson',
@@ -122,7 +126,7 @@ export default {
           }
         })
 
-        map.on('click', 'lamier-county', function (e) {
+        map.on('click', 'larimer-county', function (e) {
           console.log(e)
           var precinct = e.features[0].properties.PRECINCT
           new mapboxgl.Popup()
@@ -131,18 +135,20 @@ export default {
           .addTo(map)
         })
       })
-      console.log('Done')
+      console.log('std_map Done')
     },
     std_map_with_pres: function (event) {
       this.selected_option = 'county_map_with_pres'
       this.$http.get(
         config.API_LOCATION + '/static/VoterPrecinct.geojson'
       ).then(response => {
-        var geodata = JSON.parse(response.body)
+        var geodata = response.body
         console.log(geodata)
         this.$http.get(
-          config.API_LOCATION + '/api/PresidentialElection-2016/all/diff'
+          config.API_LOCATION + '/api/PresidentialElection-2016/all/relativeDiff',
+          {params: {'comp1': 'Clinton/Kaine', 'comp2': 'Trump/Pence'}}
         ).then(response => {
+          console.log('presidential map response: ' + response.toString())
           var heatdata = response.body
           console.log(heatdata)
           // Ok boys, we can now iterate over and map stuff
@@ -164,8 +170,13 @@ export default {
               var feature = features[index]
               var precinct = feature.properties.PRECINCT
               var color = heatdata.data[precinct]
+              console.log('Found color for precinct:' + precinct + ' ' + color)
               if (typeof color === 'undefined') {
                 color = '#888888'
+              } else if (color < 0) {
+                color = '#4262f4'
+              } else if (color > 0) {
+                color = '#f44141'
               }
               map.addLayer({
                 'id': 'precinct-' + precinct,
@@ -195,7 +206,7 @@ export default {
       }, response => {
         console.log('Stuff broke')
       })
-      console.log('Done')
+      console.log('Presidential map done')
     },
     genPieOptions: function (seriesName, data) {
       console.log(data)
